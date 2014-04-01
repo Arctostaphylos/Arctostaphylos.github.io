@@ -1,0 +1,54 @@
+div {
+	padding: 10px;
+	border: 3px black solid;
+	margin: 5px;
+}
+
+#wrapper {
+	width: 880px;
+	height: 980px;
+	margin: 0 auto;
+}
+#header {
+	width: 840px;
+	height: 200px;
+	background-color: red;
+}
+
+#sidebar {
+	width: 200px;
+	height: 500px;
+	background-color: green;
+	float: left;
+}
+
+#content {
+	width: 600px;
+	height: 500px;
+	background-color: yellow;
+	float: right;
+	position: relative;
+}
+
+#footer {
+	width: 840px;
+	height: 120px;
+	background-color: blue;
+	float: left;
+	clear: left;
+}
+
+span {
+	font-family: Arial;
+}
+
+a:hover {
+	color: red;
+}
+p.caption {
+	font-size: 150%;
+	color: red;
+	position: absolute;
+	top: 150px;
+	left: 30px;
+}
