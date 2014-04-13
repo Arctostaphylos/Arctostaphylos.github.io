@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Display inline vs. inline blocks</title>
+	<title>This is my blog</title>
 	<link rel="stylesheet" type="text/css" href="stylesheets/blog.css">
 	<style type="text/css">
 	.block {
@@ -22,7 +22,14 @@
 	</style>
 </head>
 <body>
-<p>There are two types of elements in HTML, block elements and inline elements. Block elements, like div and p, can contain other elements, and take up as much horizontal space as they can. In other words, a block element tries to be as wide as it can on the page. Block elements also don't like to be next to each other but stack on top of each other on the page. You can think of them as having a carriage return at the end.</p>
+	<header>
+		<nav>
+			<a href="../index.html">HOME</a>
+		</nav>
+	</header>
+	<div id="content">
+		<h3>Display inline vs. inline-block</h3>
+		<p>There are two types of elements in HTML, block elements and inline elements. Block elements, like div and p, can contain other elements, and take up as much horizontal space as they can. In other words, a block element tries to be as wide as it can on the page. Block elements also don't like to be next to each other but stack on top of each other on the page. You can think of them as having a carriage return at the end.</p>
 <p>Inline elements, on the other hand, can be inside other elements, but can't contain block elements. Examples of inline elements include span. Inline elements have a height, but try to be as small as possible in terms of width, and they don't mind having other elements next to them because they don't have that "carriage return" at the end.</p>
 <p>The display property in css can force block elements to behave more like inline elements in terms of how they display on the page, or make inline elements act like blocks. Display defines the type of element box an element generates in the layout. There are lots of different possible values for display, but here we're interested in the difference between the values inline and inline-block.</p>
 <p>To understand the difference it's helpful to think about the differences between how blocks and inline elements display. Blocks take up as much room as they can and stack on top of each other. Inline elements minimize their size and display next to each other. An element given the display value of inline-block is sort of a hybrid. It will take up space, but allow other elements to sit next to it, in other words it will display inline. Here's an example of  div's that all have their width set to 100px with different display values. Notice the inline divs ignore the width value and are only as long as the text, while the inline block divs have a width, but display inline. This property is useful for making horizontal navigation bars.</p>
@@ -35,5 +42,7 @@
 <div class="inline-block">I'm an inline block</div>
 <div class="inline-block">I'm an inline block</div>
 <div class="inline-block">I'm an inline block</div>
+	</div>
+
 </body>
 </html>
