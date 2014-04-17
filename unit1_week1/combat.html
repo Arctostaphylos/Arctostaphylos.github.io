@@ -5,22 +5,31 @@
   var hero = {
     id: "Most Amazing Person",
     health: 10,
-    strength: 10
+    strength: 10,
     position: {
-        x: 0,
-        y: 150
+        x: 1,
+        y: 151
       }
     };
  
   var heroNot = {
     id: "Worst Person Ever",
     health: 10,
+    strength: 10,
     position: {
       x: 150,
       y: 300
     }
   };
-  
+  function callToBattle(){
+    if (hero.position.y > 250){
+      fight();
+    }
+    else{
+      alert("Get closer!")
+    }
+
+  }
   function fight(){
  
     var heroDamageReceived =  Math.floor(Math.random() * 10);
@@ -33,35 +42,75 @@
      }
     else {
       document.getElementById("image").src="https://dl.dropboxusercontent.com/u/7084808/villain.png";
+    }
 
-    };    
-  
+  };   
+
+  function moveOk(direction){
+    x = hero.position.x;
+    y = hero.position.y;
+    //fix the conditional to be the position will move to
+    if (direction == 'right' && x+50 < 400 && (y >150 && y < 250)){
+      move(direction);
+    }
+    else if (direction == 'left' && x-50 >= 0 && (y >150 && y < 250)) {
+      move(direction);
+    }
+    else if (direction == 'up' && y - 50 >=0 && (x >150 && x < 250)){
+      move(direction);
+    }
+    else if (direction == 'down' && y+50 <= 400 && (x >150 && x < 250)){
+      move(direction);
+    }
+    else{
+      console.log("can't move");
+    }
   };
-    function moveRight(){
-    var elem = document.getElementById("hero");
+
+  function move(direction){
+      var elem = document.getElementById("hero");
+      elem.style.position = "absolute";
+      switch(direction){
+        case 'left':
+          moveLeft(elem);
+          break;
+        case 'right':
+          moveRight(elem);
+          break;
+        case 'up':
+          moveUp(elem);
+          break;
+        case 'down':
+          moveDown(elem);
+          break;
+        default:
+          console.log("movement buggered")       
+      }
+  };
+
+  function moveRight(elem){
     hero.position.x += 50;
-    elem.style.position = "absolute";
     elem.style.left = hero.position.x +"px";
+    elem.src = "images/hero_go_right.png"
   };
 
-  function moveLeft(){
-    var elem = document.getElementById("hero");
+  function moveLeft(elem){
     hero.position.x -= 50;
-    elem.style.position = "absolute";
     elem.style.left = hero.position.x +"px";
-  }
-  function moveUp(){
-    var elem = document.getElementById("hero");
+    elem.src = "images/hero_go_left.png";
+  };
+
+  function moveUp(elem){
     hero.position.y -= 50;
-    elem.style.position = "absolute";
     elem.style.top = hero.position.y +"px";
-  }
-  function moveDown(){
-    var elem = document.getElementById("hero");
+    elem.src = "images/hero_go_up.png";
+  };
+
+  function moveDown(elem){
     hero.position.y += 50;
-    elem.style.position = "absolute";
     elem.style.top = hero.position.y +"px";
-  }
+    elem.src = "images/hero_go_down.png";
+  };
   
   </script>
   
@@ -76,28 +125,27 @@
       position: absolute;
     }
     .wall:nth-child(2){
-      left: 200px;
+      left: 250px;
     }
     .wall:nth-child(3){
       left: 0px;
-      top: 200px;
+      top: 250px;
     }
     .wall:nth-child(4){
-      left: 200px;
-      top: 200px;
+      left: 250px;
+      top: 250px;
     }
     #hero {
       position: absolute;
-      top: 150px;
-      background-color: green;
+      top: 151px;
+    
     }
 
     #villian {
       position: absolute;
       top: 300px;
-      left: 150px;
-      background-color: black;
-      color: white;
+      left: 155px;
+
     }
     #image {
       float: right;
@@ -108,19 +156,19 @@
 <body>
   
   
-  <button onclick="moveLeft();">Left</button>
-  <button onclick="moveRight();">Right</button>
-  <button onclick="moveUp();">Up</button>
-  <button onclick="moveDown();">Down</button>
-  <button onclick="fight()">Fight</button>
+  <button onclick="moveOk('left');">Left</button>
+  <button onclick="moveOk('right');">Right</button>
+  <button onclick="moveOk('up');">Up</button>
+  <button onclick="moveOk('down');">Down</button>
+  <button onclick="callToBattle()">Fight</button>
   <div id="container">
     <div class="wall"></div>
     <div class="wall"></div>
     
     <div class="wall"></div>
     <div class="wall"></div>
-    <p id="hero">HERO</p>
-    <p id="villian">BAD GUY</p>
+    <p><img id="hero"src="images/hero_go_right.png"></p>
+    <p id="villian"><img src="images/bad_guy.jpg"></p>
   </div>  
   <p><img id="image" src="#"></p>
 </body>
