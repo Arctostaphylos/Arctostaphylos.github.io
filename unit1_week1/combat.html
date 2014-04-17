@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+  var hero = {
+    id: "Most Amazing Person",
+    health: 10,
+    strength: 10
+    position: {
+        x: 0,
+        y: 150
+      }
+    };
+ 
+  var heroNot = {
+    id: "Worst Person Ever",
+    health: 10,
+    position: {
+      x: 150,
+      y: 300
+    }
+  };
+  
+  function fight(){
+ 
+    var heroDamageReceived =  Math.floor(Math.random() * 10);
+    var heroNotDamageReceived= Math.floor(Math.random() * 10);
+   
+    hero.health = (hero.health - heroDamageReceived);
+    heroNot.health = (heroNot.health - heroNotDamageReceived);
+    if (hero.health >= heroNot.health){
+      document.getElementById("image").src="https://dl.dropboxusercontent.com/u/7084808/hero_win.png";
+     }
+    else {
+      document.getElementById("image").src="https://dl.dropboxusercontent.com/u/7084808/villain.png";
+
+    };    
+  
+  };
+    function moveRight(){
+    var elem = document.getElementById("hero");
+    hero.position.x += 50;
+    elem.style.position = "absolute";
+    elem.style.left = hero.position.x +"px";
+  };
+
+  function moveLeft(){
+    var elem = document.getElementById("hero");
+    hero.position.x -= 50;
+    elem.style.position = "absolute";
+    elem.style.left = hero.position.x +"px";
+  }
+  function moveUp(){
+    var elem = document.getElementById("hero");
+    hero.position.y -= 50;
+    elem.style.position = "absolute";
+    elem.style.top = hero.position.y +"px";
+  }
+  function moveDown(){
+    var elem = document.getElementById("hero");
+    hero.position.y += 50;
+    elem.style.position = "absolute";
+    elem.style.top = hero.position.y +"px";
+  }
+  
+  </script>
+  
+  <STYLE TYPE="text/css">
+    #container{
+      position: relative;
+    }
+    .wall{
+      width: 150px;
+      height: 150px;
+      background-color: brown;
+      position: absolute;
+    }
+    .wall:nth-child(2){
+      left: 200px;
+    }
+    .wall:nth-child(3){
+      left: 0px;
+      top: 200px;
+    }
+    .wall:nth-child(4){
+      left: 200px;
+      top: 200px;
+    }
+    #hero {
+      position: absolute;
+      top: 150px;
+      background-color: green;
+    }
+
+    #villian {
+      position: absolute;
+      top: 300px;
+      left: 150px;
+      background-color: black;
+      color: white;
+    }
+    #image {
+      float: right;
+    }
+  </STYLE>
+  
+</head>
+<body>
+  
+  
+  <button onclick="moveLeft();">Left</button>
+  <button onclick="moveRight();">Right</button>
+  <button onclick="moveUp();">Up</button>
+  <button onclick="moveDown();">Down</button>
+  <button onclick="fight()">Fight</button>
+  <div id="container">
+    <div class="wall"></div>
+    <div class="wall"></div>
+    
+    <div class="wall"></div>
+    <div class="wall"></div>
+    <p id="hero">HERO</p>
+    <p id="villian">BAD GUY</p>
+  </div>  
+  <p><img id="image" src="#"></p>
+</body>
+</html>
+
+
+
