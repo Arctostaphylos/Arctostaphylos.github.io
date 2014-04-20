@@ -21,20 +21,22 @@
       y: 300
     }
   };
+
   function callToBattle(){
+ //checks that the hero is in proximity to the villian   
     if (hero.position.y > 250){
       fight();
     }
     else{
       alert("Get closer!")
     }
+  };
 
-  }
   function fight(){
- 
+
     var heroDamageReceived =  Math.floor(Math.random() * 10);
     var heroNotDamageReceived= Math.floor(Math.random() * 10);
-   
+   //future versions would take into account the strength of hero and villain
     hero.health = (hero.health - heroDamageReceived);
     heroNot.health = (heroNot.health - heroNotDamageReceived);
     if (hero.health >= heroNot.health){
@@ -47,9 +49,9 @@
   };   
 
   function moveOk(direction){
+    //limiting movement to the open spaces between div blocks.
     x = hero.position.x;
     y = hero.position.y;
-    //fix the conditional to be the position will move to
     if (direction == 'right' && x+50 < 400 && (y >150 && y < 250)){
       move(direction);
     }
