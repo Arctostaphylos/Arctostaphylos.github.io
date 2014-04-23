@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is my blog</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="../index.html">HOME</a>
+		</nav>
+	</header>
+	<div id="content">
+		<h3>understanding group_by</h3>
+		<p>The group_by method is useful if you want to group elements based on a particular criterion. The method takes an array or a range and returns a hash. The keys of the new hash are determined by the code block, and the values of the hash are arrays of the elements from the original array that correspond to each key. An example or two will help.</p>
+		<p>Let's say you have an array of strings, and you want to group them by length:</p>
+		<p class = "codeblock">words = ["Ball", "Bat", "Hoop", "Marbles", "Hat", "Bear"] <br>
+			words.group_by{|word| word.length} <br><br>
+			=> {7=>["Marbles"], 3=>["Bat", "Hat"], 4=>["Ball", "Hoop", "Bear"]}</p>
+		<p><br>We can take the same array and group the elements by their first letter:</p>	
+		<p class = "codeblock">words = ["Ball", "Bat", "Hoop", "Marbles", "Hat", "Bear"] <br>
+			words.group_by{|word| word[0]} <br><br>
+			=> {77=>["Marbles"], 66=>["Ball", "Bat", "Bear"], 72=>["Hoop", "Hat"]}</p>
+		<p>In this case, the keys to the hash are the ascii code for the first letter.</p>	
+	</div>
+
+</body>
+</html>
