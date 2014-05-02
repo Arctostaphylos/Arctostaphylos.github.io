@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shanks blog</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a href="../blog_posts/blog_index.html">BLOG</a>
+		</nav>
+	</header>
+	<div id="wrapper">
+	<div id="sidebar">
+		<a href="week5_technical.html">Organizing with Classes</a>
+		<a href="week5_cultural.html">Women in Tech</a>
+		<a href="week4_technical.html">Understanding group_by</a>
+		<a href="week4_cultural.html">Navigating conflict</a>
+		<a href="week3_technical.html">Why Javascript?</a>
+	</div>
+	<div id="content">
+		<h3>Organizing with classes</h3>
+		<p>In Ruby, everything is an object, and those objects are organized into classes. Classes don't just provide organizational structure though, they are essentially the factories that build objects with particular states and behavior. For example, strings are objects that are all part of the String class. Every string is an <em>instance</em> of a string object. Every string has it's own state or personal data, but it also responds to the same methods as all the other strings. Those methods, or definitions of behavior, are defined as instance methods within the String class.</p> 
+
+		<p>Classes and objects are particularly good at modeling real world objects. For example, we can think about a car dealership in terms of objects and classes. A very simple car dealership has a number of cars of different models and years. Each car on the lot is an an instance of the Car class, and each car has a potentially different value for the attributes of model, year and mileage. We can use instance variables (indicated by the @ symbol in front of the variable name) to store these values for each instance of car. By using instance variables, we make it possible for the car object to "remember" it's state. In this example, the initialize method is passed the values for model, year, and mileage as parameters, and those values are stored as instance variables.</p>
+		<p class="codeblock">class Car<br>
+			def initialize(model, year, mileage)<br>
+			  @model = model <br>
+			  @year = year  <br>
+			  @mileage = mileage<br>
+			 end<br>
+			 end<br><br>
+
+			 car1 = Car.new("Camry", 2002, 154000)<br></p>
+
+		 <p>We can then ask the car objects to provide information about themselves by writing methods in the Car class. Let's say we want to be able to ask a car about it's model, and we want each car to be able to calculate its price based on the year. </p>
+
+		 <p class="codeblock">class Car<br>
+		 	def model<br>
+		 	puts "Model is #{@model}"<br>
+		 	end<br><br>
+
+		 	def price<br>
+		 	price = 30000/(2014 - @year)<br> 
+		 	puts "Price is #{price}<br>
+		 	end<br>
+		 	end<br>
+
+		 </p>
+		 <p>Now every instance of car has a method to tell you its model and price. The advantage of writing a method to determine price is that it's easy to change. If in the future the dealership wants a different algorithm to calculate price, perhaps taking into account the mileage or model, it's simple to change the price method, and then every car object on the lot will be able to respond to this new method rather than going through and changing the price for each car.</p>
+	</div>
+	</div>
+
+</body>
+</html>
